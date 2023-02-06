@@ -10,7 +10,7 @@
       - 'borgbackup-doc'
     state: 'present'
   when:
-    - 'ansible_os_family "= "Suse"'
+    - 'ansible_os_family == "Suse"'
 
 - name: 'Install borgbackup packages on openSUSE MicroOS'
   ansible.builtin.package:
