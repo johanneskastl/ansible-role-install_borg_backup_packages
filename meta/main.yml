@@ -1,0 +1,23 @@
+galaxy_info:
+  role_name: 'install_borg_backup_packages'
+  namespace: 'johanneskastl'
+  author: 'Johannes Kastl'
+  description: 'Install packages needed for borg backup'
+  company: 'B1 Systems GmbH'
+
+  license: 'BSD-3-Clause'
+
+  min_ansible_version: '2.12'
+
+  platforms:
+    - name: opensuse
+      versions:
+        - all
+    - name: SLES
+      versions:
+        - all
+
+  galaxy_tags: []
+
+dependencies:
+  - role: 'johanneskastl.reboot'
