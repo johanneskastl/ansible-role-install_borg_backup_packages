@@ -1,0 +1,26 @@
+---
+
+# install_borg_backup_packages/tasks/main.yml
+
+- name: 'Install borgbackup packages on openSUSE/SLES (not MicroOS)'
+  ansible.builtin.package:
+    name:
+      - 'borgbackup'
+      - 'borgbackup-bash-completion'
+      - 'borgbackup-doc'
+    state: 'present'
+  when:
+    - 'ansible_os_family "= "Suse"'
+
+- name: 'Install borgbackup packages on openSUSE MicroOS'
+  ansible.builtin.package:
+    name:
+      - 'borgbackup'
+      - 'borgbackup-bash-completion'
+      - 'borgbackup-doc'
+    state: 'present'
+  notify:
+    - 'Reboot'
+    - 'Wait for the machine(s) to be ready again'
+  when:
+    - 'ansible_os_family == "openSUSE MicroOS"'
