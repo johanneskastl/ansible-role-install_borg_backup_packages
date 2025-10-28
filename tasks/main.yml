@@ -2,7 +2,7 @@
 
 # install_borg_backup_packages/tasks/main.yml
 
-- name: 'Install borgbackup packages on openSUSE/SLES (not MicroOS)'
+- name: 'Install borgbackup packages on openSUSE/SLES (not MicroOS or Leap Micro)'
   ansible.builtin.package:
     name:
       - 'borgbackup'
@@ -12,6 +12,7 @@
   when:
     - 'ansible_os_family == "Suse"'
     - 'ansible_distribution != "openSUSE MicroOS"'
+    - 'ansible_distribution != "openSUSE Leap Micro"'
 
 - name: 'Install borgbackup packages on openSUSE MicroOS'
   ansible.builtin.package:
