@@ -11,6 +11,7 @@
     state: 'present'
   when:
     - 'ansible_os_family == "Suse"'
+    - 'ansible_distribution != "openSUSE MicroOS"'
 
 - name: 'Install borgbackup packages on openSUSE MicroOS'
   ansible.builtin.package:
@@ -23,4 +24,8 @@
     - 'Reboot'
     - 'Wait for the machine(s) to be ready again'
   when:
-    - 'ansible_os_family == "openSUSE MicroOS"'
+    -
+      '
+      ansible_os_family == "openSUSE MicroOS"
+      or ansible_distribution == "openSUSE MicroOS"
+      '
